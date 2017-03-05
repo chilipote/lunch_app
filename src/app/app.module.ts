@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { BrowsePage } from '../pages/browse/browse';
 
+import { AuthProviderComponent } from '../components/auth-provider/auth-provider';
 
 // LOCAL STORAGE
 import { LocalStorageModule } from 'angular-2-local-storage';
@@ -37,7 +38,8 @@ export const firebaseConfig = {
     LoginPage,
     RegisterPage,
     BrowsePage,
-    TabsPage
+    TabsPage,
+    AuthProviderComponent
   ],
   imports: [
     LocalStorageModule.withConfig({
@@ -56,7 +58,8 @@ export const firebaseConfig = {
     HomePage,
     TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    AuthProviderComponent
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })

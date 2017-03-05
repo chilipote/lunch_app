@@ -4,9 +4,6 @@ import { RegisterPage } from '../register/register';
 
 import { LocalStorageModule } from 'angular-2-local-storage';
 
-import { AuthService } from '../../providers/auth-service';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
-
 /*
   Generated class for the Login page.
 
@@ -29,7 +26,7 @@ export class LoginPage {
   user: User<any>;
 
 
-  constructor(public navCtrl: NavController,af: AngularFire,private _auth: AuthService,  public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.user = {};
     // private this.localStorageService: LocalStorageService;
   }
@@ -42,28 +39,4 @@ export class LoginPage {
   goToRegisterPage() {
     this.navCtrl.setRoot(RegisterPage);
   }
-
-
-  signInWithFacebook(): void {
-    this._auth.signInWithFacebook()
-      .then(() => this.onSignInSuccess());
-  }
-  signInWithGoogle(): void {
-    this._auth.signInWithGmail()
-      .then(() => this.onSignInSuccess());
-  }
-  signInWithEmail(): void {
-
-    this._auth.signInWithEmail(this.user.email,this.user.password)
-      .then(this.onSignInSuccess())
-      .catch((error) => {
-        console.log("Firebase failure: " + JSON.stringify(error));
-      });
-  }
-
-  private onSignInSuccess(): void {
-    console.log("Facebook display name ",this._auth);
-  }
-
-
 }
