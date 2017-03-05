@@ -18,25 +18,28 @@
 
     <ion-item>
       <ion-label>Firstname</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="user.firstname"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Lastname</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input [(ngModel)]="user.lastname" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Email</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input [(ngModel)]="user.email" type="email"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
 
   </ion-list>
+
+  <button ion-button clear (click)="registerUser()">Register</button>
+
 
   <div>
     <button ion-button clear (click)="goToLoginPage()">Have already an account?</button>

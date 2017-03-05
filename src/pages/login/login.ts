@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 
+
+
+import { AuthService } from '../../providers/auth-service';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+
 /*
   Generated class for the Login page.
 
@@ -14,7 +19,8 @@ import { RegisterPage } from '../register/register';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController,af: AngularFire,private _auth: AuthService,  public navParams: NavParams) {}
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -23,5 +29,20 @@ export class LoginPage {
   goToRegisterPage() {
     this.navCtrl.setRoot(RegisterPage);
   }
+
+
+  signInWithFacebook(): void {
+    this._auth.signInWithFacebook()
+      .then(() => this.onSignInSuccess());
+  }
+  signInWithGmail(): void {
+    this._auth.signInWithGmail()
+      .then(() => this.onSignInSuccess());
+  }
+
+  private onSignInSuccess(): void {
+    console.log("Facebook display name ",this._auth);
+  }
+
 
 }
