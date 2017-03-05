@@ -19,7 +19,12 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController,af: AngularFire,private _auth: AuthService,  public navParams: NavParams) {}
+  user: <any> ;
+
+
+  constructor(public navCtrl: NavController,af: AngularFire,private _auth: AuthService,  public navParams: NavParams) {
+    this.user = {};
+  }
 
 
   ionViewDidLoad() {
@@ -35,9 +40,17 @@ export class LoginPage {
     this._auth.signInWithFacebook()
       .then(() => this.onSignInSuccess());
   }
-  signInWithGmail(): void {
+  signInWithGoogle(): void {
     this._auth.signInWithGmail()
       .then(() => this.onSignInSuccess());
+  }
+  signInWithEmail(): void {
+
+    this._auth.signInWithEmail(this.user.email,this.user.password)
+      .then(this.onSignInSuccess())
+      .catch((error) => {
+        console.log("Firebase failure: " + JSON.stringify(error));
+      });
   }
 
   private onSignInSuccess(): void {

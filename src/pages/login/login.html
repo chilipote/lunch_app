@@ -17,13 +17,13 @@
   <ion-list>
 
     <ion-item>
-      <ion-label>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label>Email</ion-label>
+      <ion-input [(ngModel)]="user.email" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input [(ngModel)]="user.password" type="password"></ion-input>
     </ion-item>
 
   </ion-list>
@@ -31,8 +31,8 @@
   <div>
     <button ion-button clear (click)="signInWithFacebook()">FB</button>
     <button ion-button clear (click)="signInWithGmail()">Gmail</button>
-    
+
     <button ion-button clear (click)="goToRegisterPage()">Don't have an account</button>
-    <button ion-button>Sign In</button>
+    <button ion-button (click)="signInWithEmail()">Sign In</button>
   </div>
 </ion-content>
