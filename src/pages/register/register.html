@@ -38,12 +38,11 @@
 
   </ion-list>
 
-  <button ion-button clear (click)="registerUser()">Register</button>
-
-
   <div>
     <button ion-button clear (click)="goToLoginPage()">Have already an account?</button>
-    <button ion-button>Register</button>
+    <button ion-button (click)="registerUser()">Register</button>
   </div>
 
+  <auth-provider></auth-provider>
+  
 </ion-content>
