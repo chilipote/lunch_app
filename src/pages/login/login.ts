@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 
-
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 import { AuthService } from '../../providers/auth-service';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
@@ -13,17 +13,25 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
+interface User {
+  email: string;
+  password: string;
+}
+
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
 
-  user: <any> ;
+  user: User<any>;
 
 
   constructor(public navCtrl: NavController,af: AngularFire,private _auth: AuthService,  public navParams: NavParams) {
     this.user = {};
+    // private this.localStorageService: LocalStorageService;
   }
 
 
