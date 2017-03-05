@@ -38,6 +38,13 @@ export class AuthProviderComponent {
     alert.present();
   }
 
+  signInWithTwitter(): void {
+    this._auth.signInWithTwitter()
+      .then(this.onLogInSuccess.bind(this))
+      .catch(this.onLogInError.bind(this));
+  }
+
+
   signInWithFacebook(): void {
     this._auth.signInWithFacebook()
       .then(this.onLogInSuccess.bind(this))
