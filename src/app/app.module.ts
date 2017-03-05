@@ -11,10 +11,12 @@ import { BrowsePage } from '../pages/browse/browse';
 
 
 
-// Import the AF2 Module
+// FIREBASE
 import { AngularFireModule } from 'angularfire2';
+import { AuthService } from '../providers/auth-service';
 
-// AF2 Settings
+
+// FIREBASE CONFIG
 export const firebaseConfig = {
   apiKey: "AIzaSyCBAaf-Umc90JrkCcublrJniE4QI4XTLD0",
   authDomain: "lunchapp-63359.firebaseapp.com",
@@ -50,6 +52,6 @@ export const firebaseConfig = {
     LoginPage,
     RegisterPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })
 export class AppModule {}
