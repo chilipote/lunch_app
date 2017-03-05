@@ -37,13 +37,17 @@ export class AuthService {
     });
   }
 
-  signInWithEmail(mail,pwd): firebase.Promise<FirebaseAuthState> {
+  signInWithEmail(email, password): firebase.Promise<FirebaseAuthState> {
     return this.auth$.login(
-      { email: mail, password: pwd },
+      { email: email, password: password },
       {
         provider: AuthProviders.Password,
         method: AuthMethods.Password,
       });
+  }
+
+  registerUser(email, password) {
+    return this.auth$.createUser({email:email, password:password});
   }
 
   signOut(): void {
