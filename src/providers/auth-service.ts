@@ -23,20 +23,32 @@ export class AuthService {
     });
   }
 
+  signInWithTwitter(): firebase.Promise<FirebaseAuthState> {
+    return this.auth$.login({
+      provider: AuthProviders.Twitter,
+      method: AuthMethods.Popup
+    });
+  }
+
   signInWithGmail(): firebase.Promise<FirebaseAuthState> {
     return this.auth$.login({
       provider: AuthProviders.Google,
       method: AuthMethods.Popup
     });
   }
-  signInWithEmail(mail,pwd): firebase.Promise<FirebaseAuthState> {
+
+  signInWithEmail(email, password): firebase.Promise<FirebaseAuthState> {
     return this.auth$.login(
-      { email: mail, password: pwd },
+      { email: email, password: password },
       {
         provider: AuthProviders.Password,
         method: AuthMethods.Password,
       });
-    }
+  }
+
+  registerUser(email, password) {
+    return this.auth$.createUser({email:email, password:password});
+  }
 
   signOut(): void {
     this.auth$.logout();

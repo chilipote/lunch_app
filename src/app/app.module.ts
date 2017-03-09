@@ -9,7 +9,10 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { BrowsePage } from '../pages/browse/browse';
 
+import { AuthProviderComponent } from '../components/auth-provider/auth-provider';
 
+// LOCAL STORAGE
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 // FIREBASE
 import { AngularFireModule } from 'angularfire2';
@@ -35,9 +38,14 @@ export const firebaseConfig = {
     LoginPage,
     RegisterPage,
     BrowsePage,
-    TabsPage
+    TabsPage,
+    AuthProviderComponent
   ],
   imports: [
+    LocalStorageModule.withConfig({
+      prefix: 'my-app',
+      storageType: 'localStorage'
+    }),
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig)
   ],
@@ -50,7 +58,8 @@ export const firebaseConfig = {
     HomePage,
     TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    AuthProviderComponent
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthService]
 })
